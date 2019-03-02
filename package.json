@@ -1,0 +1,33 @@
+{
+  "name": "campusbid",
+  "version": "0.0.1",
+  "description": "This is a IIT Bazaar portal to sell things and allow other users to bid for these things",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tmibvishal/campusBid.git"
+  },
+  "keywords": [
+    "iit",
+    "delhi",
+    "bazaar",
+    "shop",
+    "campus",
+    "mall"
+  ],
+  "author": "Vishal Singh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tmibvishal/campusBid/issues"
+  },
+  "homepage": "https://github.com/tmibvishal/campusBid#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "mongoose": "5.4.16",
+    "express": "^4.16.4"
+  }
+}
