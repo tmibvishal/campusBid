@@ -1,33 +1,51 @@
-//app.js: This initiates the server
-
 const express = require("express");
 //const bodyParser = require("body-parser");
 const expressLauout = require("express-ejs-layouts");
 const database = require("./database/database");
+const router = require("./routes/product.route");
+const flash = require("connect-flash");
+const session = require("express-session");
 
-//initiating the express app
+// Initiating Express app
 const app = express();
 
-//settings the view engine to egs
+// Express Session
+app.set('trust proxy', 1); // trust first proxy
+app.use(session({
+    secret: 'secret',
+    resave: true,
+    saveUninitialized: true,
+}));
+
+// Connect flash
+app.use(flash());
+
+// Global Variables
+app.use(function(req,res,next){
+    res.locals.success_msg = req.flash("success_msg");
+    res.locals.error_msg = req.flash("error_msg");
+    next();
+})
+
+// EJS
 app.use(expressLauout);
 app.set("view engine", "ejs");
 
-//making the connection to the database
-database.connect();
-
-// Imports routes for the products
-const router = require("./routes/product.route");
-
-//now bodyparser is a part of express
+// Body Parser
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
+
+// Connect Database
+database.connect();
+
+// Routes
 app.use("/users", require("./routes/users.routes"));
 app.get("/", function(req,res){
-    res.render("welcome")
-})
+    res.render("welcome");
+});
 
 //dedicating a port number and listening to that port
 let port = process.env.PORT || 5000;
 app.listen(port, function(){
     console.log("Server is up and running on port " + port);
-})
+});
