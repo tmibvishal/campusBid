@@ -4,6 +4,9 @@ const router = express.Router();
 const controller = require("../controllers/product.controller");
 router.get("/test", controller.test);
 
+router.get("/login", (req,res) => {console.log("Login")});
+router.get("/register", (req,res) => {console.log("Register")});
+
 router.post("/create", controller.product_create);
 router.get("/:id", controller.product_details);
 router.put("/:id/update", controller.product_update);
