@@ -5,6 +5,8 @@ const database = require("./database/database");
 const router = require("./routes/product.route");
 const flash = require("connect-flash");
 const session = require("express-session");
+const passport = require("passport");
+const localStrategy = require("./config/localstrategy.passport")
 
 // Initiating Express app
 const app = express();
@@ -16,6 +18,9 @@ app.use(session({
     resave: true,
     saveUninitialized: true,
 }));
+
+// Set passport strategy
+passport.use(localStrategy);
 
 // Connect flash
 app.use(flash());

@@ -31,13 +31,14 @@ router.post("/register", (req, res) => {
     else{
         User.findOne({email}, function(err, user){
             if(err){
-                console.log(err);
+                errors.push("Some Error Occured!");
+                res.render("registerUser", {name, email, errors});
                 return;
             }
             //Checking if the email is already exists
             if(user){
                 errors.push("Email id already exists");
-                res.render("registerUser", {name, email, errors})
+                res.render("registerUser", {name, email, errors});
             }
             else{
                 const user = new User({name, email, password});
