@@ -4,9 +4,9 @@ const bcrypt = require("bcryptjs");
 //User Model
 const User = require("../models/users.model");
 
-let localStrategy = new LocalStrategy(function(email, password, done){
+let localStrategy = new LocalStrategy({usernameField: 'email'},function(email, password, done){
     User.findOne({email: email}, function(err, user){
-        if(err) return;
+        if(err) return done(err, false , {message: "Some error occured at the server! Please try again later"});
         //check user
         if(!user){
             return done(null, false, {message: "Email id not registered"});

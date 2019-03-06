@@ -1,7 +1,7 @@
 <% include ./partials/messages.ejs %>
 <form action="/users/login" method="post">
     <label>Email</label>
-    <input type="email" name="email" id="email" placeholder="Enter Email" value="<%= typeof(name)!='undefined' ? email : ''%>" required><br>
+    <input type="email" name="email" id="email" placeholder="Enter Email" value="<%= typeof(email)!='undefined' ? email : ''%>" required><br>
     <label>Password</label>
     <input type="password" name="password" id="password" placeholder="Create password" required><br>
     <button type="submit" value="Login">Login</button>
