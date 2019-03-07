@@ -47,9 +47,10 @@ router.post("/register", (req, res) => {
     if (password != password2) errors.push("Passwords do not match");
     // checking the the password length is atleast 6 characters
     if (password.length < 6) errors.push("Password must be atleast 6 characters long");
+    if (parseInt(userPhone)==NaN || userPhone.length!=10 ) errors.push("Please Enter a valid phone number");
 
     if (errors.length > 0) {
-        res.render("registerUser", {name, email, errors})
+        res.render("registerUser", {name, email, userPhone, password, password2, errors})
     }
     else {
         User.findOne({email}, function (err, user) {
