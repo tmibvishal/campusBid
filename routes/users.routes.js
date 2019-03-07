@@ -38,11 +38,11 @@ router.get("/logout" ,(req, res, next) => {
 
 // Register Handle
 router.post("/register", (req, res) => {
-    const {name, email, password, password2} = req.body;
+    const {name, email, userPhone, password, password2} = req.body;
     let errors = [];
 
     // checking if all fields are filled
-    if (!name || !email || !password || !password2) errors.push("Please fill in all the fields");
+    if (!name || !email || !userPhone || !password || !password2) errors.push("Please fill in all the fields");
     // checking if the 2 passwords match
     if (password != password2) errors.push("Passwords do not match");
     // checking the the password length is atleast 6 characters
@@ -55,16 +55,16 @@ router.post("/register", (req, res) => {
         User.findOne({email}, function (err, user) {
             if (err) {
                 errors.push("Some Error Occured!");
-                res.render("registerUser", {name, email, errors});
+                res.render("registerUser", {name, email, userPhone, password, password2 ,errors});
                 return;
             }
             //Checking if the email is already exists
             if (user) {
                 errors.push("Email id already exists");
-                res.render("registerUser", {name, email, errors});
+                res.render("registerUser", {name, email, userPhone, password, password2 , errors});
             }
             else {
-                const user = new User({name, email, password});
+                const user = new User({name, email, userPhone, password});
                 bcrypt.hash(user.password, saltRounds, function (err, hash) {
                     user.password = hash;
                     user.save().then(function (user) {

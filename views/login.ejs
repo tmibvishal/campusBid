@@ -1,8 +1,38 @@
-<% include ./partials/messages.ejs %>
-<form action="/users/login" method="post">
-    <label>Email</label>
-    <input type="email" name="email" id="email" placeholder="Enter Email" value="<%= typeof(email)!='undefined' ? email : ''%>" required><br>
-    <label>Password</label>
-    <input type="password" name="password" id="password" placeholder="Create password" required><br>
-    <button type="submit" value="Login">Login</button>
-</form>
+<main>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="h1">campus<b>Bid</b></div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+                <div class="card card-custom">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">
+                            Log In
+                        </h5>
+                        <% include ./partials/messages.ejs %>
+                        <form action="/users/login" method="post">
+                            <div class="form-label-group">
+                                <label>Email</label>
+                                <input type="email" name="email" class="form-control input-custom" id="email"
+                                       placeholder="Enter Email"
+                                       value="<%= typeof(email) != 'undefined' ? email : '' %>" required><br>
+                            </div>
+                            <div class="form-label-group">
+                                <label>Password</label>
+                                <input type="password" name="password" class="input-custom form-control" id="password"
+                                       placeholder="Create password" required><br>
+                            </div>
+                            <button class="btn btn-lg btn-primary btn-block text-uppercase btn-custom" type="submit"
+                                    value="Login">Login
+                            </button>
+                            <br>
+                            Dont have a account ? <a href="/users/register">Create One</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

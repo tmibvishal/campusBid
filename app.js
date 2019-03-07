@@ -2,7 +2,7 @@ const express = require("express");
 //const bodyParser = require("body-parser");
 const expressLauout = require("express-ejs-layouts");
 const database = require("./database/database");
-const router = require("./routes/product.route");
+const router = require("./routes/product.routes");
 const flash = require("connect-flash");
 const session = require("express-session");
 const passport = require("passport");
@@ -58,7 +58,10 @@ database.connect();
 
 // Routes
 app.use("/users", require("./routes/users.routes"));
+app.use("/products", require("./routes/product.routes"));
 app.use("/", require("./routes/index.router"));
+app.use(express.static(__dirname + '/public'));
+
 //dedicating a port number and listening to that port
 let port = process.env.PORT || 5000;
 app.listen(port, function(){

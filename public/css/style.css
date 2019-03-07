@@ -1,0 +1,17 @@
+.card-custom {
+    border-radius: 1rem;
+    box-shadow: 0 0rem 2rem 0 rgba(0, 0, 0, 0.1);
+}
+
+.form-label-group .input-custom {
+    border-radius: 2rem;
+}
+
+.card .btn-custom {
+    line-height: 1.5rem;
+}
+
+.input-group .input-group-prepend .input-group-text{
+    border-bottom-left-radius: 2rem; border-top-left-radius: 2rem;
+}
+

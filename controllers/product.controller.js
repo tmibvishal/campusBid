@@ -1,5 +1,5 @@
 const Product = require("../models/product.model");
-
+/*
 module.exports.test = function(req, res){
     res.send("This is the test controller");
 };
@@ -46,3 +46,4 @@ module.exports.product_delete = function(req, res){
         res.send('Deleted successfully!');
     });
 };
+*/
