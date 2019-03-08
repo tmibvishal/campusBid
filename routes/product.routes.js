@@ -5,39 +5,6 @@ const controller = require("../controllers/product.controller");
 const ensureAuthenticated = require('../config/auth');
 const Product = require("../models/product.model");
 
-/*
-router.get("/test", controller.test);
-
-router.get("/login", (req, res) => {
-    console.log("Login")
-});
-router.get("/register", (req, res) => {
-    console.log("Register")
-});
-
-router.post("/create", controller.product_create);
-router.get("/:id", controller.product_details);
-router.put("/:id/update", controller.product_update);
-router.delete("/:id/delete", controller.product_delete);
-*/
-
-/*
-    productName: {type: String, required: true, max: 180},
-    author: {type: Schema.Types.ObjectId },
-    metaphoneName: {type: String, required: true, max: 180},
-    price: {type: Number, required: true},
-    sellerEmail: {type: String},
-    sellerPhone: {type: String, default: "Not Given by the User" , max: 10},
-    imageLink: {type: String, required: true},
-    description: {type: String, required: true},
-    category: {type: String} ,
-    technicalDetailsKey: [{type: String}],
-    technicalDetailsValue: [{type: String}],
-    commentsUser: [{type: String}],
-    commentsMessage: [{type: String}],
-    dateAdded: { type: Date, default: Date.now }
- */
-
 router.post("/createProduct",   function (req, res) {
     // assert: req.body.price is a number like "10"
 
@@ -75,6 +42,20 @@ router.post("/createProduct",   function (req, res) {
             throw err;
         }
         res.send("You have successfully created user: " + req.body.name + " \nwith price: " + req.body.price)
+    });
+});
+
+// Home
+router.get("/" ,function(req,res){
+    let user = req.user;
+    Product.find({}, {productName:1, price:1, imageLink:1, category:1}, function (err,products){
+        if(!user){
+            res.render("products", {products});
+        }
+        else{
+            //user is logged in
+            res.render("products", { "user": user.name, products} );
+        }
     });
 });
 

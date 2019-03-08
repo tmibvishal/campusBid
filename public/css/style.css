@@ -51,7 +51,7 @@ body{
     background-position: center;
 }
 
-.text {
+.maxLines2Text {
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;

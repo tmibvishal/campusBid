@@ -9,20 +9,7 @@ router.get("/dashboard",ensureAuthenticated.ensureAuthenticated ,function(req,re
 });
 
 router.get("/home" ,function(req,res){
-    let user = req.user;
-    Product.find({}, {productName:1, price:1, imageLink:1, category:1}, function (err,products){
-        if(!user){
-            res.render("home", {products});
-        }
-        else{
-            //user exists
-            res.render("home", { user: req.user, products} );
-        }
-    });
-
-
-
-
+    res.redirect("/products");
 });
 
 module.exports = router;

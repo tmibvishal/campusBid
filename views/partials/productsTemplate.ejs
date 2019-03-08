@@ -1,14 +1,13 @@
 <div class="col-md-8 col-sm-12">
-
         <div class="custom-flex-container">
-            <% products.forEach(function(product){ console.log(product); %>
+            <% products.forEach(function(product){ %>
             <div class="custom-flex-child">
                 <div class="card">
                     <a href="product/<%=product._id%>">
                     <img width="200px" height="200px" style="background-image: url('<%= product.imageLink %>');">
                     <div class="card-body">
                         <h5 class="card-title">
-                            <div class="text">
+                            <div class="maxLines2Text">
                                 <%= product.productName %>
                             </div>
 
@@ -20,6 +19,4 @@
             </div>
             <% }) %>
         </div>
-
-
 </div>
