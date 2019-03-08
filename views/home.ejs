@@ -1,0 +1,90 @@
+<nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+    <div class="navbar-brand">
+        <a class="title" href="/home">
+            <div class="h3">campus<b>Bid</b></div>
+        </a>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="mr-auto">
+        </div>
+        <ul class="navbar-nav  my-2 my-lg-0">
+            <li class="nav-item active ">
+                <a href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a href="#">Link</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Dropdown
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<main style="margin:0px ;margin-top: 100px; ">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-md-4 col-sm-12">
+                <div class="input-group  mb-3">
+                    <input type="text" class="form-control input-custom" placeholder="Search" aria-label="Search" aria-describedby="button-search">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-danger" type="button" id="button-addon2"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 col-sm-12">
+                <ul style="list-style: none;">
+                    <li><a href="#">All</a></li>
+                    <li><a href="#">Books & Novels</a></li>
+                    <li><a href="#">Stationery</a></li>
+                    <ul style="list-style: none">
+                        <li><a href="#">Calculators</a></li>
+                        <li><a href="#">Other Items</a></li>
+                    </ul>
+                    <li><a href="#">Electronics</a></li>
+                    <ul style="list-style: none">
+                        <li><a href="#">Computers</a></li>
+                        <li><a href="#">Laptops</a></li>
+                        <li><a href="#">Computer Accessories</a></li>
+                        <li><a href="#">Mobile Phones</a></li>
+                        <li><a href="#">Tablets</a></li>
+                        <li><a href="#">Mobile Accessories</a></li>
+                        <li><a href="#">Speakers</a></li>
+                        <li><a href="#">Other Items</a></li>
+                    </ul>
+                    <li><a href="#">Furniture & Decor</a></li>
+                    <ul style="list-style: none">
+                        <li><a href="#">Furniture</a></li>
+                        <li><a href="#">Desk Accessories</a></li>
+                        <li><a href="#">Paintings</a></li>
+                        <li><a href="#">Other Items</a></li>
+                    </ul>
+                    <li><a href="#">Bicycles</a></li>
+                    <li><a href="#">Music Instruments</a></li>
+                    <li><a href="#">Sports & Gym</a></li>
+                    <li><a href="#">Bags - Luggage</a></li>
+                    <li><a href="#">Other Items</a></li>
+                </ul>
+            </div>
+
+            <% include ./partials/products.ejs %>
+        </div>
+
+
+    </div>
+</main>
