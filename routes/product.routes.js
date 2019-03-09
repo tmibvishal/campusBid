@@ -100,13 +100,18 @@ router.get("/search", function (req,res) {
 
 router.get("/:id",function(req,res){
 
-
-
-
-    Product.findById(req.params.id, function(err,product){
-        res.send(product);
+    let user = req.user;
+    Product.findById(req.params.id, function (err,product){
+        if(!user){
+            res.render("singleProductPage", {product});
+        }
+        else{
+            //user is logged in
+            res.render("singleProductPage", { "user": user.name, product} );
+        }
     });
 
 });
+
 
 module.exports = router;
