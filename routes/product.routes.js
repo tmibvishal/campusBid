@@ -5,6 +5,21 @@ const controller = require("../controllers/product.controller");
 const ensureAuthenticated = require('../config/auth');
 const Product = require("../models/product.model");
 
+router.post("/getMetaphone", function(req,res){
+    let productName = req.body.productName;
+    let description = req.body.description;
+    let category = req.body.category;
+
+    let toBeConsideredForSearch = productName + description + category;
+
+    let metaphoneName = "";
+    toBeConsideredForSearch.split(" ").forEach(function(word){
+        metaphoneName += metaphone(word) + " ";
+    });
+
+    res.send(metaphoneName);
+})
+
 router.post("/createProduct",   function (req, res) {
     // assert: req.body.price is a number like "10"
 
@@ -12,10 +27,17 @@ router.post("/createProduct",   function (req, res) {
     let description = req.body.description;
     let category = req.body.category;
 
+    let toBeConsideredForSearch = productName + description + category;
+
+    let metaphoneName = "";
+    toBeConsideredForSearch.split(" ").forEach(function(word){
+        metaphoneName += metaphone(word) + " ";
+    });
+
     let product = new Product({
         productName: productName,
         author: "5c7e7524d00094fb16510940",
-        metaphoneName: metaphone(productName + description + category),
+        metaphoneName: metaphoneName,
         price: parseInt(req.body.price),
         sellerEmail: req.body.email,
         sellerPhone: req.body.phone,
@@ -57,6 +79,34 @@ router.get("/" ,function(req,res){
             res.render("products", { "user": user.name, products} );
         }
     });
+});
+
+router.get("/search", function (req,res) {
+    let searchQuery = metaphone(req.query.searchQuery);
+    console.log(searchQuery);
+
+    user = req.user;
+    Product.find({metaphoneName: {$regex : `.*${searchQuery}.*`}}, {productName:1, price:1, imageLink:1, category:1}, function (err,products){
+        console.log(products);
+        if(!user){
+            res.render("products", {products});
+        }
+        else{
+            //user is logged in
+            res.render("products", { "user": user.name, products} );
+        }
+    });
+});
+
+router.get("/:id",function(req,res){
+
+
+
+
+    Product.findById(req.params.id, function(err,product){
+        res.send(product);
+    });
+
 });
 
 module.exports = router;

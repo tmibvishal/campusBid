@@ -43,10 +43,12 @@
         <div class="row justify-content-center">
             <div class="col-md-4 col-sm-12">
                 <div class="input-group  mb-3">
-                    <input type="text" class="form-control input-custom" placeholder="Search" aria-label="Search" aria-describedby="button-search">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-danger" type="button" id="button-addon2"><i class="fas fa-search"></i></button>
-                    </div>
+                    <form class="form-inline" action="/products/search" method="get">
+                        <input type="text" name="searchQuery" class="form-control input-custom mr-2" placeholder="Search" aria-label="Search" aria-describedby="button-search">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-danger" type="submit" id="button-addon2"><i class="fas fa-search"></i></button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -69,14 +71,14 @@
                         <li><a href="#">Tablets</a></li>
                         <li><a href="#">Mobile Accessories</a></li>
                         <li><a href="#">Speakers</a></li>
-                        <li><a href="#">Other Items</a></li>
+                        <li><a href="#">Other Electronic Items</a></li>
                     </ul>
                     <li><a href="#">Furniture & Decor</a></li>
                     <ul style="list-style: none">
                         <li><a href="#">Furniture</a></li>
                         <li><a href="#">Desk Accessories</a></li>
                         <li><a href="#">Paintings</a></li>
-                        <li><a href="#">Other Items</a></li>
+                        <li><a href="#">Other Furniture Items</a></li>
                     </ul>
                     <li><a href="#">Bicycles</a></li>
                     <li><a href="#">Music Instruments</a></li>
