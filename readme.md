@@ -1,5 +1,9 @@
 # campusBid
-    
+
+# Hosted on
+https://campusbid.herokuapp.com/
+
+# To deploy
 There is a file name hiddenFromGit_ImpInfo.js in local machine that is not uploaded to git
 File format is
 
