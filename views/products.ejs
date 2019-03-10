@@ -1,43 +1,4 @@
-<nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
-    <div class="navbar-brand">
-        <a class="title" href="/home">
-            <div class="h3">campus<b>Bid</b></div>
-        </a>
-    </div>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <div class="mr-auto">
-        </div>
-        <ul class="navbar-nav  my-2 my-lg-0">
-            <li class="nav-item active ">
-                <a href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a href="#">Link</a>
-            </li>
-
-            <% if(typeof userName != "undefined"){ %>
-                <li class="nav-item dropdown">
-                    <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <%= userName %>
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/dashboard">Account</a>
-                        <a class="dropdown-item" href="#">Sell On campusBid</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="/users/logout">Logout</a>
-                    </div>
-                </li>
-            <% }else{ %>
-                <li class="nav-item">
-                    <a href="/users/login">Login</a>
-                </li>
-            <% } %>
-        </ul>
-    </div>
-</nav>
+<% include ./partials/navbar.ejs %>
 <main style="margin:0px ;margin-top: 100px; ">
     <div class="container-fluid">
         <div class="row justify-content-center">
@@ -56,11 +17,11 @@
             <div class="col-md-3 col-sm-12">
                 <ul style="list-style: none;">
                     <li><a href="#">All</a></li>
-                    <li><a href="#">Books & Novels</a></li>
+                    <li><a href="#">Books, Novels & Notes</a></li>
                     <li><a href="#">Stationery</a></li>
                     <ul style="list-style: none">
                         <li><a href="#">Calculators</a></li>
-                        <li><a href="#">Other Items</a></li>
+                        <li><a href="#">Other Stationery Items</a></li>
                     </ul>
                     <li><a href="#">Electronics</a></li>
                     <ul style="list-style: none">

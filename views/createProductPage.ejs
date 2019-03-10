@@ -1,0 +1,135 @@
+<main>
+    <div class="container">
+        <div class="row justify-content-center">
+            <a class="title" href="/home">
+                <div class="h1">campus<b>Bid</b></div>
+            </a>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto mb-4">
+                <div class="card card-custom">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">
+                            Sell a product
+                        </h5>
+                        <% include ./partials/messages.ejs %>
+                        <form action="/products/createProduct" method="post">
+                            <div class="form-label-group">
+                                <strong><label>Seller Name:</label></strong>
+                                <%= user.name %>
+                            </div>
+                            <div class="form-label-group">
+                                <strong><label>Seller Email:</label></strong>
+                                <%= user.email %>
+                            </div>
+                            <div class="form-label-group">
+                                <strong><label>Seller Phone:</label></strong>
+                                <%= user.userPhone %>
+                                <div class="form-group form-check">
+                                    <input type="checkbox" class="form-check-input" name="CheckSharePhoneNumber">
+                                    <label class="form-check-label" for="exampleCheck1" <% if(typeof(CheckSharePhoneNumber) != "undefined"){ if(CheckSharePhoneNumber == "on"){%> checked <%}}%>>Don't Share my Phone
+                                        Number</label>
+                                </div>
+                            </div>
+
+                            <div class="form-label-group">
+                                <label>Product Name</label>
+                                <input type="text" name="productName" class="form-control input-custom" id="name"
+                                       placeholder="Enter Name"
+                                       value="<%= typeof(productName) != 'undefined' ? productName : '' %>"
+                                       required><br>
+                            </div>
+                            <div class="form-label-group">
+                                <label><i class="fas fa-money-bill-alt"></i> &nbsp;Price</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1">₹</span>
+                                    </div>
+                                    <input type="number" name="price" class="form-control input-custom"
+                                           placeholder="Enter Phone Number" id="price"
+                                           value="<%= typeof(price) != 'undefined' ? price : '' %>" required>
+                                </div>
+                                <br>
+                            </div>
+
+                            <div class="form-label-group">
+                                <label><i class="fas fa-images"></i> &nbsp;Product Image Link</label>
+                                <input type="text" name="imageLink" class="form-control input-custom" id="imageLink"
+                                       placeholder="Enter Product Image Link"
+                                       value="<%= typeof(imageLink) != 'undefined' ? imageLink : '' %>"
+                                       required>
+                                <br>
+                                <strong>Note:</strong> You can easily upload product image on <a
+                                        href="https://imgur.com/">imgur.com</a> and then paste your image url here
+                                <br>
+                                <br>
+                            </div>
+
+                            <div class="form-label-group">
+                                <label>Description</label>
+                                <textarea class="form-control" type="text" name="description" id="password"
+                                          placeholder="Enter Product Description"
+                                          required><%= typeof(description) != 'undefined' ? description : '' %></textarea>
+                                <br>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">Category</label>
+                                <select class="form-control" name="Category" id="Category">
+                                    <option>Books, Novels & Notes</option>
+                                    <optgroup label="Stationery">
+                                        <option>Calculators</option>
+                                        <option>Other Stationery Items</option>
+                                    </optgroup>
+                                    <optgroup label="Electronics">
+                                        <option>Computers</option>
+                                        <option>Laptops</option>
+                                        <option>Computer Accessories</option>
+                                        <option>Mobile Phones</option>
+                                        <option>Tablets</option>
+                                        <option>Mobile Accessories</option>
+                                        <option>Speakers</option>
+                                        <option>Other Electronic Items</option>
+                                    </optgroup>
+                                    <optgroup label="Furniture & Decor">
+                                        <option>Furniture</option>
+                                        <option>Desk Accessories</option>
+                                        <option>Paintings</option>
+                                        <option>Other Furniture Items</option>
+                                    </optgroup>
+                                    <option>Bicycles</option>
+                                    <option>Music Instruments</option>
+                                    <option>Sports & Gym</option>
+                                    <option>Bags - Luggage</option>
+                                    <option>Other Items</option>
+                                </select>
+                            </div>
+
+                            <div class="form-label-group">
+                                <label><i class="fas fa-info"></i>&nbsp; Details &nbsp; <span><button type="Button" class="btn btn-secondary btn-sm" onclick="addANewDetailsRow()"><i class="fas fa-plus"></i> &nbsp;Add a new row</button></span></label>
+
+                                <table class="table">
+                                    <tbody id="detailsTableBody">
+                                        <tr class="alert">
+                                            <th scope="row"><input class="form-control form-control-sm" type="text" placeholder="Enter Key eg:- Pages / Ram" name="technicalDetailsKey"></th>
+                                            <td><input class="form-control form-control-sm" type="text" name="technicalDetailsValue" placeholder="Enter Value eg:- 200 / 4GB"></td>
+                                            <td><button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+
+                            <button type="submit" class="btn btn-lg btn-primary btn-block text-uppercase btn-custom">Create this Product
+                            </button>
+                            <br>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

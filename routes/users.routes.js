@@ -22,11 +22,16 @@ router.get("/register", (req, res) => {
 
 // Login Handle
 router.post("/login", (req, res, next) => {
+    let redirectLink = req.flash("redirectLink");
+
+    link = (redirectLink.length == 0)?"/dashboard":redirectLink[0];
+
     passport.authenticate("local", {
-        successRedirect: '/dashboard',
+        successRedirect: link,
         failureRedirect: '/users/login',
         failureFlash: true
     })(req, res, next);
+
 });
 
 // Logout Handle
@@ -70,7 +75,7 @@ router.post("/register", (req, res) => {
                     user.password = hash;
                     user.save().then(function (user) {
                         //console.log("Succesfully saved to the database");
-                        req.flash("success_msg", "You are registered and can now log in..")
+                        req.flash("success_msg", "You are registered and can now log in..");
                         res.redirect("/users/login");
                     })
                 });

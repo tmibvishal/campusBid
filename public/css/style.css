@@ -24,7 +24,7 @@ body{
     border-bottom-left-radius: 2rem; border-top-left-radius: 2rem;
 }
 
-.container,.navbar-brand .title{
+.navbar-brand .title, .container .title{
     color: black;
     text-decoration: none;
 }
@@ -63,4 +63,12 @@ body{
 
 .comment-box{
     border-bottom: 1px dotted;
+}
+
+.drop-down-menu-align-fix{
+    !important;
+    right: 0px;
+    left: auto;
+    padding-left: 1px;
+    padding-right: 1px;
 }

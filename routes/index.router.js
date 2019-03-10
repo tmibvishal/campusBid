@@ -4,7 +4,7 @@ const controller = require("../controllers/product.controller");
 const ensureAuthenticated = require('../config/auth');
 const Product = require("../models/product.model");
 
-router.get("/dashboard",ensureAuthenticated.ensureAuthenticated ,function(req,res){
+router.get("/dashboard", ensureAuthenticated.ensureAuthenticated("/dashboard") ,function(req,res){
     res.render("dashboard", { user: req.user } );
 });
 

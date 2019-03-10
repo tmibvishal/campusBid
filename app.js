@@ -22,8 +22,8 @@ app.use(session({
 }));
 
 // Passport
-// app.use(passport.initialize());
-// app.use(passport.session());
+app.use(passport.initialize());
+app.use(passport.session());
 passport.serializeUser(function(user, done){
     done(null, user.id)
 });

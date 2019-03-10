@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+    <div class="navbar-brand">
+        <a class="title" href="/home">
+            <div class="h3">campus<b>Bid</b></div>
+        </a>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="mr-auto">
+        </div>
+        <ul class="navbar-nav  my-2 my-lg-0">
+            <li class="nav-item active ">
+                <a href="/home">Home <span class="sr-only">(current)</span></a>
+            </li>
+
+
+            <% if(typeof userName != "undefined"){ %>
+                <li class="nav-item dropdown">
+                    <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <%= userName %>
+                    </a>
+                    <div class="dropdown-menu drop-down-menu-align-fix" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/dashboard">Account</a>
+                        <a class="dropdown-item" href="/products/createProductPage">Sell On campusBid</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/users/logout">Logout</a>
+                    </div>
+                </li>
+            <% }else{ %>
+                <li class="nav-item">
+                    <a href="/users/login">Login</a>
+                </li>
+            <% } %>
+        </ul>
+    </div>
+</nav>
