@@ -110,7 +110,9 @@ router.post("/delete", ensureAuthenticated.ensureAuthenticated(),function (req, 
     let productId = req.body.productId;
     let user = req.user;
     Product.findById(productId, function (err, product){
-        if(product.author = user._id){
+        console.log(product.author + " "  + user._id);
+
+        if(product.author == user._id || user._id == "5c84bf99f5af921e2d1c417e"){ //only author or the admin can remove the product
             product.remove(function(err){
                 if(err){
                     req.flash("error_msg", "Some error occured while removeing this product. Try Again")
@@ -121,6 +123,7 @@ router.post("/delete", ensureAuthenticated.ensureAuthenticated(),function (req, 
                 res.redirect("/dashboard");
             });
         }
+
         else{
             req.flash("error_msg", "You are Trying to Remove a product that is not yours.")
             res.redirect("/dashboard");
@@ -156,7 +159,7 @@ router.get("/category/:categoryQuery", function (req, res) {
             imageLink: 1,
             category: 1
         }, function (err, products) {
-            console.log(products);
+
             if (!user) {
                 res.render("products", {products});
             }
@@ -173,7 +176,7 @@ router.get("/category/:categoryQuery", function (req, res) {
             imageLink: 1,
             category: 1
         }, function (err, products) {
-            console.log(products);
+
             if (!user) {
                 res.render("products", {products});
             }
@@ -190,7 +193,7 @@ router.get("/category/:categoryQuery", function (req, res) {
             imageLink: 1,
             category: 1
         }, function (err, products) {
-            console.log(products);
+
             if (!user) {
                 res.render("products", {products});
             }
@@ -207,7 +210,7 @@ router.get("/category/:categoryQuery", function (req, res) {
             imageLink: 1,
             category: 1
         }, function (err, products) {
-            console.log(products);
+
             if (!user) {
                 res.render("products", {products});
             }
@@ -225,7 +228,7 @@ router.get("/category/:categoryQuery", function (req, res) {
 router.get("/search", function (req, res) {
     let searchQuery = metaphone(req.query.searchQuery);
 
-    console.log(searchQuery);
+    //console.log(searchQuery);
 
     user = req.user;
     Product.find({metaphoneName: {$regex: `.*${searchQuery}.*`}}, {
@@ -234,7 +237,7 @@ router.get("/search", function (req, res) {
         imageLink: 1,
         category: 1
     }, function (err, products) {
-        console.log(products);
+
         if (!user) {
             res.render("products", {products});
         }
