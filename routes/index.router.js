@@ -23,7 +23,7 @@ router.get("/dashboard", ensureAuthenticated.ensureAuthenticated("/dashboard"), 
     }
     else {
         //normal user
-        Product.find({author: ruserId}, {
+        Product.find({author: userId}, {
             productName: 1,
             price: 1,
             imageLink: 1,
