@@ -38,6 +38,10 @@ router.get("/dashboard", ensureAuthenticated.ensureAuthenticated("/dashboard"), 
 
 });
 
+router.get("/", function (req, res) {
+    res.redirect("/products");
+});
+
 router.get("/home", function (req, res) {
     res.redirect("/products");
 });

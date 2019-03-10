@@ -1,0 +1,6 @@
+{
+  "name": "CampusBid",
+  "description": "This is a IIT Bazaar portal as a part of DevClub project",
+  "repository": "https://github.com/tmibvishal/campusBid",
+  "keywords": ["node", "express", "static"]
+}
