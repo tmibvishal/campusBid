@@ -1,21 +1,23 @@
+<table class="table">
+    <tbody id="detailsTableBody">
 
-<div class="custom-flex-container">
     <% products.forEach(function(product){ %>
-    <div class="custom-flex-child">
-        <div class="card">
-            <a href="/products/id/<%=product._id%>">
-                <img width="200px" height="200px" style="background-image: url('<%=product.imageLink%>');">
-                <div class="card-body">
-                    <h5 class="card-title">
-                        <div class="maxLines2Text">
-                            <%= product.productName %>
-                        </div>
-
-                    </h5>
-                    <p class="card-text">Rs <%= product.price %></p>
-                </div>
-            </a>
-        </div>
-    </div>
+        <tr>
+            <td><img width="40px" src="<%=product.imageLink%>"></td>
+            <th><%= product.productName %></th>
+            <td>Rs <%= product.price %></td>
+            <td>
+                <form action="/products/delete" method="post">
+                    <input type="hidden" name="productId" value="<%=product._id%>">
+                    <button type="submit" class="close" >
+                        <span aria-hidden="true"><i class="fas fa-trash"></i></span>
+                    </button>
+                </form>
+            </td>
+        </tr>
     <% }) %>
+
+
+    </tbody>
+</table>
 </div>

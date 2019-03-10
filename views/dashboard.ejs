@@ -10,7 +10,7 @@
                             User Profile
                         </h5>
                         <% include ./partials/messages.ejs %>
-                        <form action="/products/createProduct" method="post">
+
                             <div class="form-label-group">
                                 <strong><label>Name:</label></strong>
                                 <%= user.name %>
@@ -33,10 +33,6 @@
                                 <br>
                                 <% include ./partials/dashboardProductsTemplate.ejs %>
                             </div>
-
-
-
-                        </form>
                     </div>
                 </div>
             </div>

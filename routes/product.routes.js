@@ -18,7 +18,7 @@ router.post("/getMetaphone", function (req, res) {
     });
 
     res.send(metaphoneName);
-})
+});
 
 router.post("/createProduct", ensureAuthenticated.ensureAuthenticated("/products/createProductPage"), function (req, res) {
     // assert: Category is only from the one given in the selector
@@ -104,6 +104,30 @@ router.post("/createProduct", ensureAuthenticated.ensureAuthenticated("/products
     }
 
 });
+
+
+router.post("/delete", ensureAuthenticated.ensureAuthenticated(),function (req, res) {
+    let productId = req.body.productId;
+    let user = req.user;
+    Product.findById(productId, function (err, product){
+        if(product.author = user._id){
+            product.remove(function(err){
+                if(err){
+                    req.flash("error_msg", "Some error occured while removeing this product. Try Again")
+                    res.redirect("/dashboard");
+                    return;
+                }
+                req.flash("success_msg", "You successfully deleted the product.")
+                res.redirect("/dashboard");
+            });
+        }
+        else{
+            req.flash("error_msg", "You are Trying to Remove a product that is not yours.")
+            res.redirect("/dashboard");
+        }
+    });
+});
+
 
 // Home
 router.get("/", function (req, res) {
