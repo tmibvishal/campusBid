@@ -25,6 +25,8 @@ vishal@gmail.com, vishal123
 piyush@gmail.com, piyush123  
 user_1, pass_1  
 	
+Note: admin can remove any product, a normal user can only remove the product he has created
+
 # campusBid Screenshots
 
 Home Page
