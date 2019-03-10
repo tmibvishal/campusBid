@@ -119,8 +119,88 @@ router.get("/", function (req, res) {
     });
 });
 
+
+router.get("/category/:categoryQuery", function (req, res) {
+    let categoryQuery = req.params.categoryQuery;
+
+    user = req.user;
+
+    if (categoryQuery == "Stationery") {
+        Product.find({$or : [{category: "Calculators"},{category: "Other Stationery Items"}]}, {
+            productName: 1,
+            price: 1,
+            imageLink: 1,
+            category: 1
+        }, function (err, products) {
+            console.log(products);
+            if (!user) {
+                res.render("products", {products});
+            }
+            else {
+                //user is logged in
+                res.render("products", {"user": user.name, products});
+            }
+        });
+    }
+    else if (categoryQuery == "Electronics") {
+        Product.find({$or : [{category: "Computers"},{category: "Laptops"},{category: "Computer Accessories"},{category: "Mobile Phones"},{category: "Tablets"},{category: "Mobile Accessories"},{category: "Speakers"},{category: "Other Electronic Items"}]}, {
+            productName: 1,
+            price: 1,
+            imageLink: 1,
+            category: 1
+        }, function (err, products) {
+            console.log(products);
+            if (!user) {
+                res.render("products", {products});
+            }
+            else {
+                //user is logged in
+                res.render("products", {"user": user.name, products});
+            }
+        });
+    }
+    else if (categoryQuery == "Furniture & Decor") {
+        Product.find({$or : [{category: "Furniture"},{category: "Desk Accessories"},{category: "Paintings"},{category: "Other Furniture Items"}]}, {
+            productName: 1,
+            price: 1,
+            imageLink: 1,
+            category: 1
+        }, function (err, products) {
+            console.log(products);
+            if (!user) {
+                res.render("products", {products});
+            }
+            else {
+                //user is logged in
+                res.render("products", {"user": user.name, products});
+            }
+        });
+    }
+    else {
+        Product.find({category: categoryQuery}, {
+            productName: 1,
+            price: 1,
+            imageLink: 1,
+            category: 1
+        }, function (err, products) {
+            console.log(products);
+            if (!user) {
+                res.render("products", {products});
+            }
+            else {
+                //user is logged in
+                res.render("products", {"user": user.name, products});
+            }
+        });
+    }
+
+
+});
+
+
 router.get("/search", function (req, res) {
     let searchQuery = metaphone(req.query.searchQuery);
+
     console.log(searchQuery);
 
     user = req.user;

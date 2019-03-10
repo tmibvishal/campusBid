@@ -1,0 +1,21 @@
+
+<div class="custom-flex-container">
+    <% products.forEach(function(product){ %>
+    <div class="custom-flex-child">
+        <div class="card">
+            <a href="/products/id/<%=product._id%>">
+                <img width="200px" height="200px" style="background-image: url('<%=product.imageLink%>');">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <div class="maxLines2Text">
+                            <%= product.productName %>
+                        </div>
+
+                    </h5>
+                    <p class="card-text">Rs <%= product.price %></p>
+                </div>
+            </a>
+        </div>
+    </div>
+    <% }) %>
+</div>
