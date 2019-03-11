@@ -1,4 +1,5 @@
 # campusBid
+Also check on <strong>13 march </strong>. some features like adding comment are pending. if you find any issues add them in issue tab
 
 # Hosted on
 https://campusbid.herokuapp.com/
