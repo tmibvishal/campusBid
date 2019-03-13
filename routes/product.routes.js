@@ -110,8 +110,8 @@ router.post("/createProduct", ensureAuthenticated.ensureAuthenticated("/products
             category: Category,
             technicalDetailsKey: ((typeof technicalDetailsKey == "string") ? [technicalDetailsKey] : technicalDetailsKey),
             technicalDetailsValue: ((typeof technicalDetailsValue == "string") ? [technicalDetailsValue] : technicalDetailsValue),
-            commentsUser: [""],
-            commentsMessage: [""]
+            commentsUser: [],
+            commentsMessage: []
         });
         product.save(function (err, product) {
             if (err) {

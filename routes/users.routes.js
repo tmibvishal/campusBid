@@ -87,7 +87,7 @@ router.post("/register", (req, res) => {
 
 //User profile
 router.get("/id/:id", (req, res) => {
-    errors = []
+    let errors = []
     userId = req.params.id;
     User.findById(userId, function (err, user) {
         if (err) {
