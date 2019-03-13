@@ -20,6 +20,33 @@ router.post("/getMetaphone", function (req, res) {
     res.send(metaphoneName);
 });
 
+router.post("/id/:id/addComment/", ensureAuthenticated.ensureAuthenticated(), function (req, res) {
+    let productid = req.params.id;
+    let userName = req.user.name;
+    let redirectLink = "/products/id" + productid;
+    let cmtMsg = req.body.commentMessage;
+    console.log(cmtMsg);
+    if(typeof cmtMsg == "undefined"){
+        req.flash("error_msg", "Please write the proper comment message");
+        res.redirect("/products/id/" + productid);
+    }
+    else if(cmtMsg == ""){
+        req.flash("error_msg", "Please write the proper comment message");
+        res.redirect("/products/id/" + productid);
+    }
+    else{
+        Product.updateOne({id: productid}, {"$push": { commentsUser: userName, commentsMessage: req.body.commntMsg}}, function(err){
+            if(err){
+                req.flash("error_msg", "Some error occured");
+                res.redirect("/products/id/" + productid);
+
+            }
+            req.flash("success_msg", "Your comment saved succesfully");
+            res.redirect("/products/id/" + productid);
+        });
+    }
+});
+
 router.post("/createProduct", ensureAuthenticated.ensureAuthenticated("/products/createProductPage"), function (req, res) {
     // assert: Category is only from the one given in the selector
 
@@ -268,7 +295,8 @@ router.get("/id/:id", function (req, res) {
         }
         else {
             //user is logged in
-            res.render("singleProductPage", {"user": user.name, product});
+            console.log("hi");
+            res.render("singleProductPage", {"userName": user.name, product});
         }
     });
 

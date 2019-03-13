@@ -5,9 +5,11 @@
             <div class="col-md-4 col-sm-12">
                 <div class="input-group  mb-3">
                     <form class="form-inline" action="/products/search" method="get">
-                        <input type="text" name="searchQuery" class="form-control input-custom mr-2" placeholder="Search" aria-label="Search" aria-describedby="button-search">
+                        <input type="text" name="searchQuery" class="form-control input-custom mr-2"
+                               placeholder="Search" aria-label="Search" aria-describedby="button-search">
                         <div class="input-group-append">
-                            <button class="btn btn-outline-danger" type="submit" id="button-addon2"><i class="fas fa-search"></i></button>
+                            <button class="btn btn-outline-danger" type="submit" id="button-addon2"><i
+                                        class="fas fa-search"></i></button>
                         </div>
                     </form>
                 </div>
@@ -15,7 +17,7 @@
         </div>
         <div class="row">
             <div class="col-md-3 col-sm-4 col-xs-12 mb-4">
-                <img src="<%=product.imageLink%>" width="100%" class="img-thumbnail">
+                <img src="<%= product.imageLink %>" width="100%" class="img-thumbnail">
             </div>
             <div class="col-md-7 col-sm-8 col-xs-12">
                 <% include ./partials/messages.ejs %>
@@ -24,18 +26,18 @@
                         <!--
                         <li class="breadcrumb-item"><a href="#">Electronics</a></li>
                         -->
-                        <li class="breadcrumb-item active" aria-current="page"><%=product.category%></li>
+                        <li class="breadcrumb-item active" aria-current="page"><%= product.category %></li>
                     </ol>
                 </nav>
 
-                <h1><%=product.productName%></h1>
-                <strong>Category: </strong><%=product.category%>
-                <h1>₹ <%=product.price%></h1>
-                <%=product.description%>
-                <h5 class="mt-4"><i class="fas fa-info-circle"></i> Technical Details</h5>
+                <h1><%= product.productName %></h1>
+                <strong>Category: </strong><%= product.category %>
+                <h1>₹ <%= product.price %></h1>
+                <%= product.description %>
+                <h5 class="mt-4"><i class="fas fa-info-circle"></i> &nbsp;Technical Details</h5>
                 <table class="table">
                     <tbody>
-                    <% for(i=0;i<product.technicalDetailsKey.length;i++) {%>
+                    <% for(i = 0;i < product.technicalDetailsKey.length;i++) { %>
                         <tr>
                             <th scope="row"><%= product.technicalDetailsKey[i] %></th>
                             <td><%= product.technicalDetailsValue[i] %></td>
@@ -48,8 +50,8 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title"><i class="fas fa-shopping-bag"></i> Seller</h5>
-                        <div class="card-text"><strong>Email: </strong><%=product.sellerEmail%></div>
-                        <div class="card-text"><strong>Phone: </strong><%=product.sellerPhone%></div>
+                        <div class="card-text"><strong>Email: </strong><%= product.sellerEmail %></div>
+                        <div class="card-text"><strong>Phone: </strong><%= product.sellerPhone %></div>
                         <a href="#" class="btn btn-primary">Go to Seller Page</a>
                     </div>
                 </div>
@@ -58,21 +60,32 @@
 
         <div class="row mt-4 mb-4">
             <div class="col-12">
-                <h5><i class="fas fa-comments"></i> Comments </h5>
+                <h5><i class="fas fa-comments"></i> &nbsp;Comments </h5>
 
-
-                <% for(i=0;i<product.commentsUser.length;i++){ %>
-                <div class="media comment-box">
-                    <div class="media-body">
-                        <strong><i class="fas fa-user"></i> <%= product.commentsUser[i] %></strong><br>
-                        <%= product.commentsMessage[i] %>
+                <% for(i = 0;i < product.commentsUser.length;i++){ %>
+                    <div class="media comment-box">
+                        <div class="media-body">
+                            <strong><i class="fas fa-user"></i> <%= product.commentsUser[i] %></strong><br>
+                            <%= product.commentsMessage[i] %>
+                        </div>
                     </div>
-                </div>
                 <% } %>
+                <br>
+                <form action="addComment" method="post">
+                    <div>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control form-control-sm" placeholder="Comment Message" name="commentMessage" >
+                            <div class="input-group-append">
+                                <input type="submit" class="btn btn-sm btn-outline-secondary" type="button" value="Comment"></input>
+                            </div>
+                        </div>
+                    </div>
 
+                </form>
             </div>
-
         </div>
+
+    </div>
 
 
     </div>
