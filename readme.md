@@ -1,5 +1,5 @@
+<img src="https://i.imgur.com/9r5bFfw.png" alt="CampusBidLogo" height="50px">
 
-# campusBid
 This is a IIT Bazaar portal where you can sell second hand products.
 
 # Hosted on
