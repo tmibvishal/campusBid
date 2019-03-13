@@ -1,0 +1,19 @@
+<table class="table">
+    <tbody id="detailsTableBody">
+
+    <% products.forEach(function(product){ %>
+        <tr>
+            <td>
+                <a href="/products/id/<%= product._id %>">
+                    <img width="40px" src="<%= product.imageLink %>">
+                </a>
+            </td>
+            <th><%= product.productName %>
+            </th>
+            <td>Rs <%= product.price %></td>
+        </tr>
+    <% }) %>
+
+    </tbody>
+</table>
+</div>

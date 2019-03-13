@@ -20,7 +20,7 @@ router.post("/getMetaphone", function (req, res) {
     res.send(metaphoneName);
 });
 
-router.post("/id/:id/addComment/", ensureAuthenticated.ensureAuthenticated(), function (req, res) {
+router.post("/id/:id/addComment/", ensureAuthenticated.ensureAuthenticated("/products/"), function (req, res) {
     let productid = req.params.id;
     let userName = req.user.name;
     let redirectLink = "/products/id" + productid;
@@ -35,7 +35,8 @@ router.post("/id/:id/addComment/", ensureAuthenticated.ensureAuthenticated(), fu
         res.redirect("/products/id/" + productid);
     }
     else{
-        Product.updateOne({id: productid}, {"$push": { commentsUser: userName, commentsMessage: req.body.commntMsg}}, function(err){
+        console.log("Comment is adding");
+        Product.updateOne({_id: productid}, {"$push": { commentsUser: userName, commentsMessage: cmtMsg}}, function(err){
             if(err){
                 req.flash("error_msg", "Some error occured");
                 res.redirect("/products/id/" + productid);
@@ -99,7 +100,7 @@ router.post("/createProduct", ensureAuthenticated.ensureAuthenticated("/products
         });
         let product = new Product({
             productName: productName,
-            author: "5c7e7524d00094fb16510940",
+            author: user._id,
             metaphoneName: metaphoneName,
             price: parseInt(price),
             sellerEmail: user.email,
@@ -295,7 +296,6 @@ router.get("/id/:id", function (req, res) {
         }
         else {
             //user is logged in
-            console.log("hi");
             res.render("singleProductPage", {"userName": user.name, product});
         }
     });

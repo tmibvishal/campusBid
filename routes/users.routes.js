@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const controller = require("../controllers/product.controller");
 const User = require("../models/users.model");
+const Product = require("../models/product.model");
 const bcrypt = require("bcryptjs");
 const saltRounds = 10;
 const passport = require("passport");
@@ -82,8 +83,36 @@ router.post("/register", (req, res) => {
             }
         });
     }
+});
+
+//User profile
+router.get("/id/:id", (req, res) => {
+    errors = []
+    userId = req.params.id;
+    User.findById(userId, function (err, user) {
+        if (err) {
+            errors.push("User Does Not Exists");
+            res.render("userProfile", {errors});
+            return;
+        }
+
+        Product.find({author: userId}, {
+            productName: 1,
+            price: 1,
+            imageLink: 1,
+            category: 1
+        }, function (err, products) {
+            //user is logged in
+            if(err){
+                errors.push("There is some error");
+                res.render("userProfile", {user, errors});
+                return;
+            }
+            res.render("userProfile", {user, products});
+        });
 
 
-})
+    });
+});
 
 module.exports = router;

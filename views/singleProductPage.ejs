@@ -52,7 +52,7 @@
                         <h5 class="card-title"><i class="fas fa-shopping-bag"></i> Seller</h5>
                         <div class="card-text"><strong>Email: </strong><%= product.sellerEmail %></div>
                         <div class="card-text"><strong>Phone: </strong><%= product.sellerPhone %></div>
-                        <a href="#" class="btn btn-primary">Go to Seller Page</a>
+                        <a href="/users/id/<%=product.author%>" class="btn btn-primary">Go to Seller Page</a>
                     </div>
                 </div>
             </div>
@@ -71,7 +71,7 @@
                     </div>
                 <% } %>
                 <br>
-                <form action="addComment" method="post">
+                <form action="/products/id/<%=product._id%>/addComment" method="post">
                     <div>
                         <div class="input-group mb-3">
                             <input type="text" class="form-control form-control-sm" placeholder="Comment Message" name="commentMessage" >

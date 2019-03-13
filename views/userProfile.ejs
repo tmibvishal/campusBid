@@ -1,0 +1,42 @@
+<% include ./partials/navbar.ejs %>
+<main style="margin:10px ;margin-top: 70px; ">
+    <div class="container">
+        <br>
+        <div class="row">
+            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto mb-4">
+                <div class="card card-custom">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">
+                            User Profile
+                        </h5>
+                        <% include ./partials/messages.ejs %>
+
+                        <% if(typeof user != "undefined"){%>
+                        <div class="form-label-group">
+                            <strong><label>Name:</label></strong>
+                            <%= user.name %>
+                        </div>
+                        <div class="form-label-group">
+                            <strong><label>Email:</label></strong>
+                            <%= user.email %>
+                        </div>
+                        <div class="form-label-group">
+                            <strong><label>Registered Since:</label></strong>
+                            <%= user.date %>
+                        </div>
+
+                        <% if(typeof products != "undefined"){%>
+                        <div class="form-label-group">
+                            <strong><label>Products of <%=user.name%></label></strong>
+                            <br>
+                            <% include ./partials/userProfileProductsTemplate.ejs %>
+                        </div>
+                        <%}%>
+
+                        <%}%>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

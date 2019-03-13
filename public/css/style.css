@@ -34,6 +34,7 @@ body{
 }
 
 .custom-flex-container{
+    justify-content: center;
     display: flex;
     flex-wrap: wrap;
 }
@@ -42,6 +43,8 @@ body{
     width:202px;
     margin: 10px;
 }
+
+
 
 .custom-flex-child img{
     width: 200px;
@@ -72,3 +75,4 @@ body{
     padding-left: 1px;
     padding-right: 1px;
 }
+
