@@ -2,19 +2,18 @@
 <main style="margin:0px ;margin-top: 100px; ">
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-md-4 col-sm-12">
-                <div class="input-group  mb-3">
-                    <form class="form-inline" action="/products/search" method="get">
-                        <input type="text" name="searchQuery" class="form-control input-custom mr-2"
-                               placeholder="Search" aria-label="Search" aria-describedby="button-search">
-                        <div class="input-group-append">
-                            <button class="btn btn-outline-danger" type="submit" id="button-addon2"><i
-                                        class="fas fa-search"></i></button>
-                        </div>
-                    </form>
+        <div class="col-md-4 col-sm-8">
+            <form class="form-inline" action="/products/search" method="get">
+                <div class="input-group mb-3 w-100">
+                    <input type="text" name="searchQuery" class="form-control input-custom" placeholder="Search All Products" aria-label="Search" aria-describedby="button-search">
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-sm btn-outline-danger btn-outline-secondary" type="button"><i class="fas fa-search"></i></button>
+                    </div>
                 </div>
-            </div>
+
+            </form>
         </div>
+    </div>
         <div class="row">
             <div class="col-md-3 col-sm-4 col-xs-12 mb-4">
                 <img src="<%= product.imageLink %>" width="100%" class="img-thumbnail">
@@ -49,7 +48,7 @@
             <div class="col-md-2 col-sm-12 col-xs-12 mt-2">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title"><i class="fas fa-shopping-bag"></i> Seller</h5>
+                        <h5 class="card-title"><i class="fas fa-shopping-bag"></i> &nbsp;Seller</h5>
                         <div class="card-text"><strong>Email: </strong><%= product.sellerEmail %></div>
                         <div class="card-text"><strong>Phone: </strong><%= product.sellerPhone %></div>
                         <a href="/users/id/<%=product.author%>" class="btn btn-primary">Go to Seller Page</a>
@@ -58,8 +57,8 @@
             </div>
         </div>
 
-        <div class="row mt-4 mb-4">
-            <div class="col-12">
+        <div class="row mt-4 mb-4 justify-content-center">
+            <div class="col-sm-12 col-md-6">
                 <h5><i class="fas fa-comments"></i> &nbsp;Comments </h5>
 
                 <% for(i = 0;i < product.commentsUser.length;i++){ %>

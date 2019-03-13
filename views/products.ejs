@@ -3,9 +3,8 @@
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-md-4 col-sm-8">
-
                     <form class="form-inline" action="/products/search" method="get">
-                        <div class="input-group mb-3">
+                        <div class="input-group mb-3 w-100">
                             <input type="text" name="searchQuery" class="form-control input-custom" placeholder="Search All Products" aria-label="Search" aria-describedby="button-search">
                             <div class="input-group-append">
                                 <button type="submit" class="btn btn-sm btn-outline-danger btn-outline-secondary" type="button"><i class="fas fa-search"></i></button>
@@ -13,7 +12,6 @@
                         </div>
 
                     </form>
-
             </div>
         </div>
 
@@ -21,11 +19,11 @@
 
 
         <div class="row">
-            <div class="col-md-3 col-sm-12">
-                <% include ./partials/categorySideBar.ejs %>
-            </div>
-            <div class="col-md-8 col-sm-12 mx-auto text-center" align="center">
+            <div class="col-md-9 col-sm-12 mx-auto text-center col-md-push-3" align="center">
                 <% include ./partials/productsTemplate.ejs %>
+            </div>
+            <div class="col-md-3 col-sm-12 col-md-pull-9">
+                <% include ./partials/categorySideBar.ejs %>
             </div>
         </div>
 
